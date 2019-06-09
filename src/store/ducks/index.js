@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
+import counters from './counters';
+
 const reducers = combineReducers({
-  // Remova essa linha depois de adicionar seus ducks
-  example: () => [],
+  counters,
 });
 
 export default reducers;

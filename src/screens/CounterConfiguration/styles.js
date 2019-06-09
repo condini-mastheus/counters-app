@@ -36,6 +36,7 @@ export const SelectedCounterTitle = styled.Text`
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
+  text-transform: uppercase;
 `;
 
 export const AddButton = styled.TouchableOpacity.attrs({
