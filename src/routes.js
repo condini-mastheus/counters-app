@@ -10,17 +10,17 @@ import TabBarIcon from '~/components/TabBarIcon';
 const Routes = createAppContainer(
   createBottomTabNavigator(
     {
-      Search: {
+      Counters: {
         screen: Main,
         navigationOptions: {
           title: 'Counters',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-list" />,
         },
       },
-      A: {
+      Configuration: {
         screen: CounterConfiguration,
         navigationOptions: {
-          title: 'Settings',
+          title: 'Configuration',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-settings" />,
         },
       },
