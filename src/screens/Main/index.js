@@ -1,63 +1,38 @@
 import React from 'react';
 import { Animated } from 'react-native';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import Header from '~/components/Header';
 import {
-  Container, List, Counter, CounterTitle, CounterNumber, EmptyList,
+  Container,
+  List,
+  CounterContainer,
+  Counter,
+  CounterTitle,
+  CounterNumber,
+  EmptyList,
 } from './styles';
 
-const counters = [
-  {
-    id: 1,
-    counter: 1,
-  },
-  {
-    id: 2,
-    counter: 1,
-  },
-  {
-    id: 3,
-    counter: 1,
-  },
-  {
-    id: 4,
-    counter: 1,
-  },
-  {
-    id: 5,
-    counter: 1,
-  },
-  {
-    id: 6,
-    counter: 1,
-  },
-  {
-    id: 7,
-    counter: 1,
-  },
-  {
-    id: 8,
-    counter: 1,
-  },
-  {
-    id: 9,
-    counter: 1,
-  },
-];
+import { Creators as CountersActions } from '~/store/ducks/counters';
 
-function Main() {
+function Main({ counters, selectCounter }) {
   const scrollOffset = new Animated.Value(0);
 
   return (
     <Container>
       <Header title="Counters" scrollOffset={scrollOffset} />
       <List
-        data={counters}
+        data={counters.data}
+        extraData={counters.current.id}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => (
-          <Counter active={item.id === 1}>
-            <CounterTitle>{`Counter ${item.id}`}</CounterTitle>
-            <CounterNumber>{item.counter}</CounterNumber>
+          <Counter onPress={() => selectCounter(item)}>
+            <CounterContainer active={item.id === counters.current.id}>
+              <CounterTitle>{`Counter ${item.id}`}</CounterTitle>
+              <CounterNumber>{item.counter}</CounterNumber>
+            </CounterContainer>
           </Counter>
         )}
         onScroll={Animated.event([
@@ -81,4 +56,13 @@ function Main() {
   );
 }
 
-export default Main;
+const mapStateToProps = state => ({
+  counters: state.counters,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(CountersActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Main);

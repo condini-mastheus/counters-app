@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import Header from '~/components/Header';
 
 import {
@@ -21,33 +24,54 @@ import {
   RemoveButtonText,
 } from './styles';
 
-function CounterConfiguration() {
+import { Creators as CountersActions } from '~/store/ducks/counters';
+
+function CounterConfiguration({
+  counters,
+  removeCurrentCounter,
+  createNewCounter,
+  navigation,
+  addCounter,
+  subtractCounter,
+}) {
+  function handleCreateNewCounter() {
+    createNewCounter();
+    navigation.navigate('Counters');
+  }
+
+  function handleRemoveCounter() {
+    removeCurrentCounter(counters.current.id);
+    navigation.navigate('Counters');
+  }
+
   return (
     <Container>
       <Header title="Configuration" />
       <Content>
-        <SelectedSection>
-          <SelectedCounterTitle>Selected Counter</SelectedCounterTitle>
+        {Object.keys(counters.current).length !== 0 && (
+          <SelectedSection>
+            <SelectedCounterTitle>{`Counter ${counters.current.id}`}</SelectedCounterTitle>
 
-          <ActionsContainer>
-            <ActionButton>
-              <ActionIcon name="ios-remove" />
-            </ActionButton>
-            <CounterNumber>1</CounterNumber>
-            <ActionButton>
-              <ActionIcon name="ios-add" />
-            </ActionButton>
-          </ActionsContainer>
+            <ActionsContainer>
+              <ActionButton onPress={subtractCounter}>
+                <ActionIcon name="ios-remove" />
+              </ActionButton>
+              <CounterNumber>{counters.current.counter}</CounterNumber>
+              <ActionButton onPress={addCounter}>
+                <ActionIcon name="ios-add" />
+              </ActionButton>
+            </ActionsContainer>
 
-          <RemoveButton>
-            <RemoveIcon />
-            <RemoveButtonText>REMOVE</RemoveButtonText>
-          </RemoveButton>
-        </SelectedSection>
+            <RemoveButton onPress={handleRemoveCounter}>
+              <RemoveIcon />
+              <RemoveButtonText>REMOVE</RemoveButtonText>
+            </RemoveButton>
+          </SelectedSection>
+        )}
 
         <Section>
           <Title>Counters</Title>
-          <AddButton>
+          <AddButton onPress={handleCreateNewCounter}>
             <AddIcon />
             <AddButtonText>NEW COUNTER</AddButtonText>
           </AddButton>
@@ -57,4 +81,13 @@ function CounterConfiguration() {
   );
 }
 
-export default CounterConfiguration;
+const mapStateToProps = state => ({
+  counters: state.counters,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(CountersActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CounterConfiguration);

@@ -7,8 +7,8 @@ const Header = ({ title, scrollOffset }) => (
   <Container
     style={{
       height: scrollOffset.interpolate({
-        inputRange: [0, 300],
-        outputRange: [150, 54],
+        inputRange: [0, 200, 220],
+        outputRange: [150, 54, 50],
         extrapolate: 'clamp',
       }),
     }}
@@ -16,8 +16,8 @@ const Header = ({ title, scrollOffset }) => (
     <Title
       style={{
         fontSize: scrollOffset.interpolate({
-          inputRange: [0, 300],
-          outputRange: [24, 16],
+          inputRange: [0, 200, 220],
+          outputRange: [24, 16, 15],
           extrapolate: 'clamp',
         }),
       }}
