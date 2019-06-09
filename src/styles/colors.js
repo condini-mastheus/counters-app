@@ -10,6 +10,6 @@ export default {
   transparent: 'transparent',
   blackTransparent: opacity => `rgba(0, 0, 0, ${opacity})`,
   whiteTransparent: opacity => `rgba(255, 255, 255, ${opacity})`,
-  primary: '#e5556e',
-  secundary: '#23202c',
+  primary: '#142e55',
+  secundary: '#188ece',
 };

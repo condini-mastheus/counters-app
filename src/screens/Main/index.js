@@ -1,7 +1,16 @@
 import React from 'react';
 
-import { View } from 'react-native';
+import Header from '~/components/Header';
+import CountersList from '~/components/CountersList';
+import { Container } from './styles';
 
-const Main = () => <View />;
+function Main() {
+  return (
+    <Container>
+      <Header title="Counters" />
+      <CountersList />
+    </Container>
+  );
+}
 
 export default Main;
