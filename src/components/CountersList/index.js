@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Animated } from 'react-native';
+
 import {
   List, Counter, CounterTitle, CounterNumber, EmptyList,
 } from './styles';
@@ -43,7 +45,7 @@ const counters = [
   },
 ];
 
-function CountersList() {
+function CountersList({ scrollOffset }) {
   return (
     <List
       data={counters}
@@ -54,6 +56,15 @@ function CountersList() {
           <CounterNumber>{item.counter}</CounterNumber>
         </Counter>
       )}
+      onScroll={Animated.event([
+        {
+          nativeEvent: {
+            contentOffset: {
+              y: scrollOffset,
+            },
+          },
+        },
+      ])}
       // onEndReachedThreshold={0.5}
       // onEndReached={this.handleOnEndReached}
       // onRefresh={this.handleRefresh}

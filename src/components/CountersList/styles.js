@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
+import { Animated } from 'react-native';
 
 import { colors, metrics } from '~/styles';
 
-export const List = styled.FlatList.attrs({
+export const List = styled(Animated.FlatList).attrs({
   contentContainerStyle: {
     paddingTop: metrics.basePadding / 2,
     paddingBottom: metrics.basePadding,

@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { colors, metrics } from '~/styles';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
   background: ${colors.secundary};
 `;
