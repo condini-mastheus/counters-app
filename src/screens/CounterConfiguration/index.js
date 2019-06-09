@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -80,6 +81,28 @@ function CounterConfiguration({
     </Container>
   );
 }
+
+CounterConfiguration.propTypes = {
+  counters: PropTypes.shape({
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        counter: PropTypes.number,
+      }),
+    ).isRequired,
+    current: PropTypes.shape({
+      id: PropTypes.string,
+      counter: PropTypes.number,
+    }),
+  }).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+  removeCurrentCounter: PropTypes.func.isRequired,
+  createNewCounter: PropTypes.func.isRequired,
+  addCounter: PropTypes.func.isRequired,
+  subtractCounter: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   counters: state.counters,

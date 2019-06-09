@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Animated } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -44,10 +45,6 @@ function Main({ counters, selectCounter }) {
             },
           },
         ])}
-        // onEndReachedThreshold={0.5}
-        // onEndReached={this.handleOnEndReached}
-        // onRefresh={this.handleRefresh}
-        // refreshing={refreshing}
         ListEmptyComponent={() => (
           <EmptyList>Your counter list is empty, add counters to interact</EmptyList>
         )}
@@ -55,6 +52,22 @@ function Main({ counters, selectCounter }) {
     </Container>
   );
 }
+
+Main.propTypes = {
+  counters: PropTypes.shape({
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        counter: PropTypes.number,
+      }),
+    ).isRequired,
+    current: PropTypes.shape({
+      id: PropTypes.string,
+      counter: PropTypes.number,
+    }),
+  }).isRequired,
+  selectCounter: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   counters: state.counters,

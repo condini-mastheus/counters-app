@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Animated } from 'react-native';
 
 import { Container, Title } from './styles';
@@ -26,6 +27,11 @@ const Header = ({ title, scrollOffset }) => (
     </Title>
   </Container>
 );
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  scrollOffset: PropTypes.instanceOf(Animated.Value),
+};
 
 Header.defaultProps = {
   scrollOffset: new Animated.Value(0),
