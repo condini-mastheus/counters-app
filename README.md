@@ -58,7 +58,8 @@ Edite o arquivo `<project_dir>/android/app/build.gradle`: <br>
 ```
 
 <br>
-Na pasta `<project_dir>/android`, execute o comando `gradlew assembleRelease`<br>
+
+Na pasta `<project_dir>/android`, execute o comando `gradlew assembleRelease` <br>
 
 ### IOS
 
