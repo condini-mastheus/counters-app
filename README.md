@@ -27,7 +27,9 @@ Edite o arquivo `<project_dir>/android/gradle.properties` e coloque essas inform
 ```
 
 <br>
-Edite o arquivo `<project_dir>/android/app/build.gradle`:
+
+Edite o arquivo `<project_dir>/android/app/build.gradle`: <br>
+
 ```
  ...
   android {
@@ -53,6 +55,7 @@ Edite o arquivo `<project_dir>/android/app/build.gradle`:
   }
 ...
 ```
+
 <br>
 Na pasta `<project_dir>/android`, execute o comando `gradlew assembleRelease`<br>
 
