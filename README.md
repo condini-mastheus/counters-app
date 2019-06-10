@@ -63,7 +63,7 @@ Na pasta `<project_dir>/android`, execute o comando `gradlew assembleRelease` <b
 
 ### IOS
 
-Aguarndo atualizações...
+Aguardando atualizações...
 
 ## Implantação
 
@@ -75,4 +75,4 @@ O APK gerado pode ser encontrado em `<project_dir>/android/app/build/outputs/apk
 
 ### IOS
 
-Aguarndo atualizações...
+Aguardando atualizações...
