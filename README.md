@@ -46,6 +46,7 @@ Edite o arquivo `<project_dir>/android/app/build.gradle`: <br>
           }
         }
       }
+
       buildTypes {
           release {
               ...
